@@ -1,6 +1,6 @@
 "use strict";
 
-const UserStorage = require("./UserStorage");
+import { getUserInfo, save } from "./UserStorage";
 
 class User {
     constructor(body) {
@@ -9,7 +9,7 @@ class User {
 
     login() {
         const client = this.body;
-        const { id, password } = UserStorage.getUserInfo(client.id);
+        const { id, password } = getUserInfo(client.id);
 
         if(id) {
             if(id === client.id && password === client.password) {
@@ -22,9 +22,9 @@ class User {
     
     register() {
         const client = this.body;
-        const response = UserStorage.save(client);
+        const response = save(client);
         return response;
     }
 }
 
-module.exports = User;
+export default User;

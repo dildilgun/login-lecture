@@ -1,6 +1,6 @@
 "use strict";
 
-const User = require("../../models/User");
+import User from "../../models/User";
 
 const output = {
     home: (req, res) => {
@@ -29,7 +29,7 @@ const process = {
     }
 };
 
-module.exports = {
+export default {
     output,
     process,
 };
