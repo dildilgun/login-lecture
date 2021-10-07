@@ -1,6 +1,6 @@
 "use strict";
 
-import User from "../../models/User";
+const User = require("../../models/User");
 
 const output = {
     home: (req, res) => {
@@ -17,9 +17,9 @@ const output = {
 };
 
 const process = {
-    login: (req, res) => {
+    login: async (req, res) => {
         const user = new User(req.body);
-        const response = user.login();
+        const response = await user.login();
         return res.json(response);
     },
     register: (req, res) => {
@@ -29,7 +29,7 @@ const process = {
     }
 };
 
-export default {
+module.exports = {
     output,
     process,
 };
